@@ -1,0 +1,11 @@
+Database :
+- dbname : snort
+- dbhost : localhost
+- dbuser : snortuser
+- dbpass : password
+
+Logging  :
+- logger : database
+- stdout : 1
+- stderr : 0
+

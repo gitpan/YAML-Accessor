@@ -1,0 +1,11 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+lib/YAML/Accessor.pm
+t/00_use.t
+t/01_constructor.t
+testdata/testdata.yml
+t/02_accessors.t
+TODO
+META.yml                                 Module meta-data (added by MakeMaker)
