@@ -96,7 +96,6 @@ sub get {
 	# Hashrefslice again because they have asked for multiple keys.
 	# Class::Accessor says this can happen. I'm not sure how that's
 	# possible.
-	say "@keys";
 	if ( scalar @keys > 1 ) {
 		return [ @{ $self->{yaml} }{ @keys } ]
 	}
@@ -206,6 +205,13 @@ L<Class::Accessor> and instead overrides its C<get()> and C<set()> functions
 to refer to your shiny YAML object. That's kind of inconsistent, but you
 wanted YAML, not an object that referred to YAML. If you can come up with
 a way to fix it, awesome. This way is simpler.
+
+Also, it looks like doing something like
+
+  use base qw{ Class::Accessor };
+  use base qw{ YAML::Accessor  };
+
+is fraught with peril. Don't do that.
 
 =head1 AUTHOR
 
