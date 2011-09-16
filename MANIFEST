@@ -9,3 +9,4 @@ testdata/testdata.yaml
 t/02_accessors.t
 TODO
 META.yml                                 Module meta-data (added by MakeMaker)
+t/03_sub_accessors.t
