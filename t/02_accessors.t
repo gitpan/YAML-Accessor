@@ -1,42 +1,29 @@
-package Foo;
+use Test::More tests => 9;
 
-use Test::More tests => 12;
-use warnings;
-use strict;
-use Carp qw{ confess };
-
-use base qw{ YAML::Accessor };
-
-our $yml = './testdata/testdata.yml';
+use YAML::Accessor;
+our $yml = './testdata/testdata.yaml';
 
 ok( -e $yml );
 
-my $fh;
+my $yfile;
 
-open $fh, "+<", $yml
+open $yfile, "+<", $yml
 	or die $!;
 
-ok( $fh );
+ok( $yfile );
 
-my $ya = Foo->new(
-	file => $fh,           # Can be a filehandle.
+my $ya = YAML::Accessor->new(
+	file => $yfile,        # Can be a filehandle.
 	autocommit => 0,       # This is a default. Can be 1 (true).
 	readonly   => 1,       # This is a default. Can be 1 (true).
 	damian     => 1,       # See below. Can be 0 (false).
 );
 
 ok( $ya );
-ok( $ya->get_Logging() );
-ok( $ya->get_Database() );
+ok( $ya->get_ordered_mapping() );
+ok( $ya->get_mapping() );
 
-# Now this is crummy. We /know/ what the yml file looks like
-# but we're replicating the data here.
-
-ok( $ya->get_Logging()->[0]->{logger} eq "database" );
-ok( $ya->get_Logging()->[1]->{stdout} == 1 );
-ok( $ya->get_Logging()->[2]->{stderr} == 0 );
-
-ok( $ya->get_Database()->[0]->{dbname} eq "snort" );
-ok( $ya->get_Database()->[1]->{dbhost} eq "localhost" );
-ok( $ya->get_Database()->[2]->{dbuser} eq "snortuser" );
-ok( $ya->get_Database()->[3]->{dbpass} eq "password" );
+ok( $ya->get_nested() );
+ok( $ya->get_string() );
+ok( $ya->get_heredoc() );
+ok( $ya->get_concatenated() );

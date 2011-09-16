@@ -4,3 +4,6 @@ Revision history for Perl extension YAML::Accessor.
 	- original version; created by h2xs 1.23 with options
 		--use-new-tests -n YAML::Accessor -v 0.10 -X -A -MClass::Accessor -MYAML::XS
 
+0.3  Fri Sep 16 08:43:06 EDT 2011
+	added additional data structures to yaml test data
+	added sub-accessors

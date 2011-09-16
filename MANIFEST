@@ -5,7 +5,7 @@ README
 lib/YAML/Accessor.pm
 t/00_use.t
 t/01_constructor.t
-testdata/testdata.yml
+testdata/testdata.yaml
 t/02_accessors.t
 TODO
 META.yml                                 Module meta-data (added by MakeMaker)

@@ -7,7 +7,7 @@ use Carp qw{ confess };
 
 use base qw{ YAML::Accessor };
 
-our $yml = './testdata/testdata.yml';
+our $yml = './testdata/testdata.yaml';
 
 ok( -e $yml );
 
@@ -29,7 +29,7 @@ open $fh, "+<", $yml
 ok( $fh );
 
 $ya = Foo->new(
-	file => $fh,          # Can be a filehandle.
+	file       => $fh,     # Can be a filehandle.
 	autocommit => 0,       # This is a default. Can be 1 (true).
 	readonly   => 1,       # This is a default. Can be 1 (true).
 	damian     => 1,       # See below. Can be 0 (false).
