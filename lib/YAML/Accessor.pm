@@ -64,10 +64,9 @@ sub new {
 		$package->follow_best_practice();
 	}
 
-	# Both accessors and mutators will need special get/set methods
+	# Both accessors and mutators need local get/set methods
 	# because we don't want to just access the values of the
-	# YAML::Accessor object, we want to access the actual YAML::XS
-	# object.
+	# YAML::Accessor object, we want to access the sub-accessors, too.
 	if ($obj->{params}->get_readonly()) {
 		foreach my $key ( %{ $yaml } ) {
 			$obj->mk_ro_accessors( keys %{ $yaml } );
@@ -87,13 +86,19 @@ sub set { # {{{
 	return undef if $self->{params}->get_readonly();
 	
 	# Note to the user: you may be creating a new YAML key here.
-	$self->{yaml}->{$key} = (scalar @values > 1 ) ? shift @values : \@values;
+	# XXX: NOTE: Class::Accessor tells us we might actually have more than one
+	# value here. That seems like hogwash. So, the below line is commented. If
+	# this is actually broken, tell me how to fix it.
+	# 
+	# $self->{yaml}->{$key} = (scalar @values > 1 ) ? shift @values : \@values;
+	$self->{yaml}->{$key} = shift @values;
 	
 	# Since the object has set the values, we can push to the file if that's
 	# what the user asked for. We don't need to run the constructor again
 	# since the object is updated and intact.
 	if ($self->{params}->get_autocommit()) {
-		return YAML::Accessor->DumpFile( $self->{params}->get_file(), $self->{yaml} );
+		$self->commit();
+		return $self->{yaml}->{$key};
 	}
 	
 	return @values;
@@ -101,10 +106,6 @@ sub set { # {{{
 
 sub get { # {{{
 	my $self = shift;
-	# The sub-elements can't be YAML::Accessors, so we use Class::Accessor
-	# instead. Ideally this would be 'ref $self' or 'blessed $self', but
-	# this doesn't quite work out.
-	my $parent_package = 'Class::Accessor';
 	my $child_package  = 'YAML::Accessor';
 
 	my (@keys) = (@_);
@@ -162,6 +163,16 @@ sub get { # {{{
 			}
 		}
 	} # }}}
+} # }}}
+
+# In case you're not using autocommit and want to force a write to the disk.
+sub commit { # {{{
+	my $self = shift;
+	my $yaml = $self->{yaml};
+	my $fn   = $self->{params}->{file};
+	# arg 1 is a filename, everything afterwards gets written to the specified
+	# file.
+	return YAML::XS::DumpFile( $fn, $yaml ); # ingy, does this set $! ?
 } # }}}
 
 22/7;

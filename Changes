@@ -7,3 +7,8 @@ Revision history for Perl extension YAML::Accessor.
 0.3  Fri Sep 16 08:43:06 EDT 2011
 	added additional data structures to yaml test data
 	added sub-accessors
+
+0.4  Wed Sep 21 19:18:09 EDT 2011
+	added support for mutators (but no sub-mutators)
+	added support for autocommit
+	added support for manually committing
