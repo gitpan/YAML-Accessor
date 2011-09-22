@@ -246,7 +246,7 @@ and your methods will be:
 
 C<damian> defaults to true.
 
-=head1 METHODS
+=head1 ACCESSORS
 
 C<get_foo()> accessors will return whatever the value of C<foo> is (note
 use of "Damianized" accessor here). In the event there's a list of things,
@@ -259,6 +259,12 @@ will return the value of the latest attempt to "commit" (write) your file.
 In the event you have not turned on C<autocommit> during the constructor,
 the mutator will simply return the value(s) supplied. For more detail,
 have a look at the code. But really, it's not too complicated.
+
+=head1 METHODS
+
+C<commit()> allows you to force the current yaml to be flushed to disk.
+Note that YAML::Accessor calls this method internally when you use 
+mutators.
 
 =head1 SUB-ACCESSORS
 
@@ -282,8 +288,8 @@ is tedious and misses the point of this package.
 
 =head1 SEE ALSO
 
-  L<YAML::XS>
-  L<Class::Accessor>
+  YAML::XS
+  Class::Accessor
 
   Perl Best Practices
   Damian Conway

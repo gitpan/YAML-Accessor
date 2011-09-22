@@ -6,7 +6,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
 	NAME              => 'YAML::Accessor',
-	VERSION           => '0.4',
+	VERSION           => '0.41',
 	PREREQ_PM         => {
 		'Params::Validate' => 0,
 		'Scalar::Util'     => 0,
