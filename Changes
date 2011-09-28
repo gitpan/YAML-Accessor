@@ -12,3 +12,6 @@ Revision history for Perl extension YAML::Accessor.
 	added support for mutators (but no sub-mutators)
 	added support for autocommit
 	added support for manually committing
+
+0.42 Wed Sep 28 10:26:39 EDT 2011
+	added refresh() method

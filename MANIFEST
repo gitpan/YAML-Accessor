@@ -3,11 +3,12 @@ Makefile.PL
 MANIFEST
 README
 lib/YAML/Accessor.pm
+testdata/testdata.yaml
+TODO
+META.yml
 t/00_use.t
 t/01_constructor.t
-testdata/testdata.yaml
 t/02_accessors.t
-TODO
-META.yml                                 Module meta-data (added by MakeMaker)
 t/03_sub_accessors.t
 t/04_mutate.t
+t/05_refresh.t

@@ -52,7 +52,7 @@ sub new {
 	$object_params->follow_best_practice();
 	$object_params->mk_ro_accessors( keys %{ $object_params } );
 	my $damian = $object_params->get_damian();
-		
+
 	my $obj = bless { 
 		yaml => $yaml,
 		params => $object_params,
@@ -174,6 +174,16 @@ sub commit { # {{{
 	# file.
 	return YAML::XS::DumpFile( $fn, $yaml ); # ingy, does this set $! ?
 } # }}}
+
+# In the event that your yaml changes while you're running, we can re-read
+# the file. This is useful for tools that poll their config files for
+# changes.
+sub refresh {
+	my ($self) = shift;
+	return $self unless $self->{params}->{file};
+	my $refreshed_self = new( __PACKAGE__, %{ $self->{params} } );
+	return $refreshed_self;
+}
 
 22/7;
 

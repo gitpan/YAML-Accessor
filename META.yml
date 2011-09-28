@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               YAML-Accessor
-version:            0.41
+version:            0.42
 abstract:           A syntactical sugar wrapper for YAML::XS.
 author:
     - Alex J. Avriette <alex@cpan.org>
