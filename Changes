@@ -15,3 +15,10 @@ Revision history for Perl extension YAML::Accessor.
 
 0.42 Wed Sep 28 10:26:39 EDT 2011
 	added refresh() method
+
+0.43
+	added explicit call to 'use feature qw/state/'. apparently common::sense doesn't quite frob this well enough for some perls.
+		I'm looking at you, 5.15.
+		And mlehmann.
+	Also, mst gave me strictures.pm. It doesn't suck as much.
+

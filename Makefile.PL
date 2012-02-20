@@ -1,12 +1,10 @@
 #!/usr/bin/perl
 
-use common::sense;
-
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
 	NAME              => 'YAML::Accessor',
-	VERSION           => '0.42',
+	VERSION           => '0.43',
 	PREREQ_PM         => {
 		'Params::Validate' => 0,
 		'Scalar::Util'     => 0,

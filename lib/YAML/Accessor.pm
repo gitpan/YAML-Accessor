@@ -1,8 +1,11 @@
 package YAML::Accessor;
 
-use common::sense;
-
+use feature qw{ state };
 use base qw{ Class::Accessor };
+
+# hi, mst.
+use strictures 1;
+
 use YAML::XS;
 use Params::Validate qw{ :types validate };
 use Scalar::Util qw{ blessed };
