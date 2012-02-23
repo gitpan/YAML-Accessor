@@ -22,3 +22,5 @@ Revision history for Perl extension YAML::Accessor.
 		And mlehmann.
 	Also, mst gave me strictures.pm. It doesn't suck as much.
 
+0.44
+	Updated Makefile.PL to require strictures instead of c::s. Oops.
