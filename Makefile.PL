@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
 	NAME              => 'YAML::Accessor',
-	VERSION           => '0.44',
+	VERSION           => '0.45',
 	PREREQ_PM         => {
 		'Params::Validate' => 0,
 		'Scalar::Util'     => 0,
@@ -17,5 +17,5 @@ WriteMakefile(
 		'SUFFIX'   => 'gz',
 	},
 	ABSTRACT => 'A syntactical sugar wrapper for YAML::XS.',
-	AUTHOR   => 'Alex J. Avriette <alex@cpan.org>',
+	AUTHOR   => 'Jane A. Avriette <jane@cpan.org>',
 );

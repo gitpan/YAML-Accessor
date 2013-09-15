@@ -1,5 +1,7 @@
 package YAML::Accessor;
 
+use 5.10.0;
+
 use feature qw{ state };
 use base qw{ Class::Accessor };
 
@@ -330,11 +332,11 @@ in the interest of speed and ingy's preference.
 
 =head1 AUTHOR
 
-Alex J. Avriette, E<lt>alex@cpan.orgE<gt>
+Jane A. Avriette, E<lt>jane@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2011 by Alex J. Avriette
+Copyright (C) 2011 by Jane A. Avriette
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.10.0 or,
